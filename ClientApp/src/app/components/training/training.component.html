@@ -1,0 +1,10 @@
+<h1>Timers</h1>
+<select style="
+    width: 200px;" class="form-control" [(ngModel)]="countTimers" (ngModelChange)="onChange($event)">
+  <option *ngFor="let countTimer of numbers" [ngValue]="countTimer"> {{countTimer}} </option>
+</select>
+
+<h5>Please fill all required fields for start the timers (*)</h5>
+<timer *ngFor="let sportsman of timersArray"></timer>
+
+

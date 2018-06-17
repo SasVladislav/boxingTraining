@@ -1,0 +1,62 @@
+<div class="col-md-3">
+  <div>
+    <h1>{{timerMinutes}}:{{timerSeconds}}</h1>
+    <span *ngIf="isStartTimer && !isRelax" style="float:right">Fight</span>
+    <span *ngIf="isStartTimer && isRelax" style="float:right">Relax</span>
+    <h5>Finished rounds: {{timerRound}}</h5>
+  </div>
+  <div>
+    <div class="col-md-4" style="padding-left:  0px;">
+      <button class="btn btn-success" (click)="start()" [disabled]="isDisableControls">Start</button>
+      <button class="btn btn-primary" (click)="restartAll()" [disabled]="isDisableControls">Restart All</button>
+    </div>
+    <div class="col-md-6" style="padding-left: 24px;">
+      <button class="btn btn-danger" (click)="stop()" [disabled]="isDisableControls">Stop</button>
+      <button class="btn btn-primary" (click)="restartRound()" [disabled]="isDisableControls">Restart Round</button>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Sportsman:</label>
+    <select class="form-control" [(ngModel)]="selectedSportsmanId">
+      <option *ngFor="let sportsman of allSportsmans" [ngValue]="sportsman.Id"> {{sportsman.FirstAndLastName}} </option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>* Count rounds:</label>
+    <select class="form-control" [(ngModel)]="selectedRound" (ngModelChange)="validationFillAllControls()">
+      <option *ngFor="let round of rounds" [ngValue]="round"> {{round}} </option>
+    </select>
+  </div>
+  <div class="form-inline">
+    <div class="form-group col-lg-15">
+      <label>* Duration of the round:</label>
+      <select class="form-control" [ngModel]="timerRoundDurationMinutes" (ngModelChange)="changeDurationMinutes($event)">
+        <option [ngValue]="undefined">min</option>
+        <option *ngFor="let roundMinute of minutesRoundArray" [ngValue]="roundMinute"> {{roundMinute}} </option>
+      </select>
+      <select class="form-control" [ngModel]="timerRoundDurationSeconds" (ngModelChange)="changeDurationSeconds($event)">
+        <option [ngValue]="undefined">sec</option>
+        <option *ngFor="let second of secondsArray" [ngValue]="second"> {{second}} </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-inline">
+    <div class="form-group col-lg-15">
+      <label>* Duration of the relax:</label>
+      <select class="form-control" [(ngModel)]="timerRelaxDurationMinutes" (ngModelChange)="validationFillAllControls()">
+        <option [ngValue]="undefined">min</option>
+        <option *ngFor="let relaxMinute of minutesReluxArray" [ngValue]="relaxMinute"> {{relaxMinute}} </option>
+      </select>
+      <select class="form-control" [(ngModel)]="timerRelaxDurationSeconds" (ngModelChange)="validationFillAllControls()">
+        <option [ngValue]="undefined">sec</option>
+        <option *ngFor="let second of secondsArray" [ngValue]="second"> {{second}} </option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Select tone for end round:</label>
+    <select class="form-control" [(ngModel)]="selectedTone" (ngModelChange)="changeTone($event)">
+      <option *ngFor="let tone of tonesList" [ngValue]="tone"> {{tone}} </option>
+    </select>
+  </div>
+</div>

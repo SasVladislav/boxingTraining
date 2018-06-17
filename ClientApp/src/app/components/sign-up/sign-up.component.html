@@ -1,0 +1,12 @@
+<h1>Sign up:</h1>
+<br />
+<p>Input first and last name</p>
+<input type="text" [(ngModel)]="signUpModel.GeneralInformation.FirstAndLastName" name="firstAndLastName" />
+<br />
+<p>Input email</p>
+<input type="text" [(ngModel)]="signUpModel.AuthenticateInformation.Email" name="email" />
+<br />
+<p>Input password:</p>
+<input type="password" [(ngModel)]="signUpModel.AuthenticateInformation.Password" name="password" />
+<br />
+<button (click)="SignUp()">Sign Up</button>

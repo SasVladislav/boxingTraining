@@ -1,0 +1,21 @@
+<h1>Sportsmans</h1>
+
+<p *ngIf="!sportsmansList"><em>Loading...</em></p>
+
+<table class='table' *ngIf="sportsmansList">
+    <thead>
+        <tr>
+            <th>First and last name</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let sportsman of sportsmansList">
+            <td>{{ sportsman.FirstAndLastName }}</td>
+            <td><button class="btn btn-danger" (click)="DeleteSportsman(sportsman.Id)">Delete</button> </td>
+        </tr>
+    </tbody>
+</table>
+<p>Enter First and Last name</p>
+<input type="text" [(ngModel)]="createSportsman.SportsmanInformation.FirstAndLastName"/>
+<button class="btn btn-success" (click)="createNewSportsman()">Add new sportsman</button>

@@ -1,0 +1,45 @@
+<h1>Statistic</h1>
+<select *ngIf="sportsmansList && trainerInformation" style="width: 200px;" class="form-control" [(ngModel)]="selectedSportsman" (ngModelChange)="getSportsmanRoundStatistic()">
+  <option [ngValue]="trainerInformation"> {{trainerInformation.FirstAndLastName}} </option>
+  <option *ngFor="let sportsman of sportsmansList" [ngValue]="sportsman"> {{sportsman.FirstAndLastName}} </option>
+</select>
+
+<p *ngIf="!sportsmanRoundStatisticList"><em>Loading...</em></p>
+
+<table class='table' *ngIf="filterRoundsStatistic">
+  <thead>
+    <tr>
+      <th>Date From - Date To</th>
+      <th>Total count rounds</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ filterRoundsStatistic.DateFrom }} - {{ filterRoundsStatistic.DateTo }} </td>
+      <td>{{ totalRounds }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" type="button" (click)="filterByDate('Day')">Day</button>
+<button class="btn btn-primary" type="button" (click)="filterByDate('Week')">Week</button>
+<button class="btn btn-primary" type="button" (click)="filterByDate('Month')">Month</button>
+
+<utc-datepicker *ngIf="filterRoundsStatistic" [date]="filterRoundsStatistic.DateFrom" format="MM/DD/YYYY" (dateChange)="filterRoundsStatistic.DateFrom = $event"></utc-datepicker>-
+<utc-datepicker *ngIf="filterRoundsStatistic" [date]="filterRoundsStatistic.DateTo" format="MM/DD/YYYY" (dateChange)="filterRoundsStatistic.DateTo = $event"></utc-datepicker>
+<button class="btn btn-primary" type="button" (click)="filterByDate('DateRange')">Date Range</button>
+
+<div *ngIf="totalRounds" class="col-md-9">
+  <div style="display: block;">
+    <canvas baseChart width="400" height="400"
+            [datasets]="lineChartData"
+            [labels]="lineChartLabels"
+            [options]="lineChartOptions"
+            [colors]="lineChartColors"
+            [legend]="lineChartLegend"
+            [chartType]="lineChartType"
+            (chartHover)="chartHovered($event)"
+            (chartClick)="chartClicked($event)"></canvas>
+  </div>
+</div>
+<script src="node_modules/chart.js/src/chart.js"></script>

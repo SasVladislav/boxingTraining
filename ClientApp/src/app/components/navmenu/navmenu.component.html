@@ -1,0 +1,43 @@
+<div class='main-nav'>
+  <div class='navbar navbar-inverse'>
+    <div class='navbar-header'>
+      <button type='button' class='navbar-toggle' data-toggle='collapse' data-target='.navbar-collapse'>
+        <span class='sr-only'>Toggle navigation</span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+        <span class='icon-bar'></span>
+      </button>
+      <a class='navbar-brand' [routerLink]="['/home']">BoxingTraining.Client</a>
+    </div>
+    <div class='clearfix'></div>
+    <div class='navbar-collapse collapse'>
+      <ul class='nav navbar-nav'>
+        <li *ngIf="!isAuthorize" [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/sign-in']">
+            <span class='glyphicon glyphicon-user'></span> Sign In
+          </a>
+        </li>
+        <li *ngIf="!isAuthorize" [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/sign-up']">
+            <span class='glyphicon glyphicon-plus'></span> Sign Up
+          </a>
+        </li>
+        <li *ngIf="isAuthorize" [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/sportsman']">
+            <span class='glyphicon glyphicon-th-list'></span> Sportsmans
+          </a>
+        </li>
+        <li *ngIf="isAuthorize" [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/training']">
+            <span class='glyphicon glyphicon-education'></span> Training
+          </a>
+        </li>
+        <li *ngIf="isAuthorize" [routerLinkActive]="['link-active']">
+          <a [routerLink]="['/statistic']">
+            <span class='glyphicon glyphicon-education'></span> Statistic
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
