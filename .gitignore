@@ -12,6 +12,11 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# yarn
+yarn.lock
+
+npm-debug.log.*
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
@@ -29,6 +34,9 @@ Obj/
 # Visual Studio 2015 cache/options directory
 .vs/
 
+/wwwroot/dist/
+/ClientApp/dist/
+
 # MSTest test Results
 [Tt]est[Rr]esult*/
 [Bb]uild[Ll]og.*
@@ -41,6 +49,10 @@ TestResult.xml
 [Dd]ebugPS/
 [Rr]eleasePS/
 dlldata.c
+
+# DNX
+project.lock.json
+artifacts/
 
 *_i.c
 *_p.c
@@ -120,6 +132,9 @@ AutoTest.Net/
 # Installshield output folder
 [Ee]xpress/
 
+# Typedocs generated content
+doc/
+
 # DocProject is a documentation generator add-in
 DocProject/buildhelp/
 DocProject/Help/*.HxT
@@ -172,6 +187,7 @@ BundleArtifacts/
 !*.[Cc]ache/
 
 # Others
+*.db
 ClientBin/
 ~$*
 *~
@@ -181,7 +197,11 @@ ClientBin/
 *.publishsettings
 orleans.codegen.cs
 
+# Workaround for https://github.com/aspnet/JavaScriptServices/issues/235
 /node_modules
+node_modules
+node_modules/**/*
+node_modules/_placeholder.txt
 
 # RIA/Silverlight projects
 Generated_Code/
@@ -231,3 +251,15 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Ignore AwesomeTypescript cache
+.awcache
+
+# VSCode files
+.vscode/chrome
+
+# Jest Code Coverage report
+coverage/
+
+.DS_Store
+package-lock.json
